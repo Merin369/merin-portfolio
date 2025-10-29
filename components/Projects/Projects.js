@@ -62,25 +62,20 @@ const Projects = () => {
     return () => cancelAnimationFrame(animationRef.current);
   }, []);
 
-  const handleMouseEnter = () => {
-    isPausedRef.current = true;
-  };
-
-  const handleMouseLeave = () => {
-    isPausedRef.current = false;
-  };
+  const handleMouseEnter = () => (isPausedRef.current = true);
+  const handleMouseLeave = () => (isPausedRef.current = false);
 
   return (
     <section
       id={MENULINKS[2].ref}
       className="w-full bg-black py-20 relative select-none"
     >
-      <div className="section-container text-white">
+      <div className="section-container text-white text-center md:text-left">
         <p className="uppercase tracking-widest text-gray-400">PROJECTS</p>
-        <h1 className="text-6xl mt-2 font-semibold text-gradient w-fit">
+        <h1 className="text-5xl md:text-6xl mt-2 font-semibold text-gradient w-fit mx-auto md:mx-0">
           My Projects
         </h1>
-        <h2 className="text-[1.65rem] font-medium md:max-w-lg max-w-sm mt-2 text-gray-300">
+        <h2 className="text-lg md:text-[1.65rem] font-medium mt-2 text-gray-300 max-w-xl mx-auto md:mx-0">
           Each project is crafted with creativity, precision, and love ❤️
         </h2>
       </div>
@@ -90,42 +85,42 @@ const Projects = () => {
         ref={scrollRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="flex gap-12 mt-16 overflow-hidden whitespace-nowrap px-12"
+        className="flex gap-8 mt-16 overflow-hidden whitespace-nowrap px-6 md:px-12"
       >
         {[...PROJECT_CARDS, ...PROJECT_CARDS].map((proj, index) => (
           <div
             key={index}
-            className={`relative flex-shrink-0 w-[700px] h-[480px] rounded-[2rem] overflow-hidden shadow-2xl transform transition-all duration-700 hover:scale-[1.03] bg-gradient-to-br ${proj.gradient}`}
+            className={`relative flex-shrink-0 w-[85vw] sm:w-[420px] md:w-[650px] lg:w-[700px] h-[340px] sm:h-[400px] md:h-[460px] rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-700 hover:scale-[1.03] bg-gradient-to-br ${proj.gradient}`}
           >
-           {/* Floating Tech Logos */}
-<div className="absolute top-10 left-10 flex flex-wrap gap-4 opacity-80">
-  {proj.tech.map((t) => (
-    <img
-      key={t}
-      src={`/projects/tech/${t}.svg`}
-      alt={t}
-      className="w-12 h-12 object-contain drop-shadow-lg"
-      onError={(e) => {
-        // Fallback to React logo if the SVG is missing
-        e.target.onerror = null;
-        e.target.src = "/projects/tech/react.svg";
-      }}
-    />
-  ))}
-</div>
+            {/* Floating Tech Logos */}
+            <div className="absolute top-4 left-4 flex flex-wrap gap-3 opacity-80">
+              {proj.tech.map((t) => (
+                <img
+                  key={t}
+                  src={`/projects/tech/${t}.svg`}
+                  alt={t}
+                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow-lg"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "/projects/tech/react.svg";
+                  }}
+                />
+              ))}
+            </div>
 
-
-            {/* Main project image (larger & tilted) */}
+            {/* Main project image */}
             <img
               src={proj.image}
               alt={proj.title}
-              className="absolute right-[10%] top-[12%] w-[480px] h-[320px] rounded-xl shadow-2xl transform rotate-[-8deg] object-cover border border-white/20"
+              className="absolute inset-0 w-full h-full object-cover opacity-90"
             />
 
-            {/* Text area overlay */}
-            <div className="absolute bottom-0 left-0 w-full h-[35%] bg-gradient-to-t from-black/95 to-transparent p-8 flex flex-col justify-end">
-              <h3 className="text-3xl font-bold mb-3">{proj.title}</h3>
-              <p className="text-gray-300 text-base leading-relaxed font-light">
+            {/* Text overlay */}
+            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 to-transparent p-6 flex flex-col justify-end">
+              <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-purple-400">
+                {proj.title}
+              </h3>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                 {proj.description}
               </p>
             </div>
