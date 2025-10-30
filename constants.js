@@ -34,7 +34,7 @@ export const TYPED_STRINGS = [
 ];
 
 export const SOCIAL_LINKS = [
-  { name: "mail", url: "mailto:merik305@gmail.com" },
+  { name: "mail", url: "mailto:merink305@gmail.com" },
   { name: "linkedin", url: "https://www.linkedin.com/in/merin-k-8982b9238" },
   { name: "github", url: "https://github.com/Merin369" },
 ];
